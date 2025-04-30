@@ -13,8 +13,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '17'
+          node-version: '18'
 
-      - name: Check Node.js and npm versions
-        run: node --version
+      - name: Install dependencies
+        run: yarn install
+        
+      - name: Install dependencies
+        run: yarn test
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
   
